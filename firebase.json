@@ -3,6 +3,10 @@
     "public": "out",
     "rewrites": [
       {
+        "source": "/news",
+        "destination": "/news.html"
+      },
+      {
         "source": "**",
         "destination": "/index.html"
       }

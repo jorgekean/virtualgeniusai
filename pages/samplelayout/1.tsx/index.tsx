@@ -59,7 +59,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                         aria-label="open drawer"
                         edge="start"
                         onClick={handleDrawerToggle}
-                        sx={{ mr: 2 }}
+                        sx={{ mr: 2, display: { md: "none" } }}
                     >
                         <MenuIcon />
                     </IconButton>

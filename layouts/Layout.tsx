@@ -31,6 +31,9 @@ import WorkHistoryIcon from '@mui/icons-material/WorkHistory';
 import HistoryToggleOffIcon from '@mui/icons-material/HistoryToggleOff';
 import SettingsIcon from '@mui/icons-material/Settings';
 import SummarizeIcon from '@mui/icons-material/Summarize';
+import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
+import { useRouter } from "next/router";
+import Link from "next/link";
 
 const drawerWidth = 240;
 interface LayoutProps {
@@ -86,6 +89,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     // const classes = useStyles();
     const [mobileOpen, setMobileOpen] = useState(false);
     const lgUp = useMediaQuery("(min-width:960px)");
+    const router = useRouter();
 
     const handleDrawerToggle = () => {
         setMobileOpen(!mobileOpen);
@@ -104,25 +108,46 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                         <ListItemText primary={text} />
                     </ListItemButton>
                 ))} */}
-                <ListItemButton>
+                <ListItemButton
+                    selected={router.pathname === "/"}
+                    onClick={() => { router.push("/"); setMobileOpen(false); }}
+                >
                     <ListItemIcon>
                         <WorkHistoryIcon />
                     </ListItemIcon>
                     <ListItemText primary={"Time Tracker"} />
                 </ListItemButton>
-                <ListItemButton>
+                <ListItemButton
+                    selected={router.pathname === "/timesheethistory"}
+                    onClick={() => { router.push("/timesheethistory"); setMobileOpen(false); }}
+                >
                     <ListItemIcon>
                         <HistoryToggleOffIcon />
                     </ListItemIcon>
                     <ListItemText primary={"Timesheet History"} />
                 </ListItemButton>
-                <ListItemButton>
+                <ListItemButton
+                    selected={router.pathname === "/billingmanager"}
+                    onClick={() => { router.push("/billingmanager"); setMobileOpen(false); }}
+                >
+                    <ListItemIcon>
+                        <MonetizationOnIcon />
+                    </ListItemIcon>
+                    <ListItemText primary={"Billing Manager"} />
+                </ListItemButton>
+                <ListItemButton
+                    selected={router.pathname === "/settings"}
+                    onClick={() => { router.push("/settings"); setMobileOpen(false); }}
+                >
                     <ListItemIcon>
                         <SettingsIcon />
                     </ListItemIcon>
                     <ListItemText primary={"Settings"} />
                 </ListItemButton>
-                <ListItemButton>
+                <ListItemButton
+                    selected={router.pathname === "/report"}
+                    onClick={() => { router.push("/report"); setMobileOpen(false); }}
+                >
                     <ListItemIcon>
                         <SummarizeIcon />
                     </ListItemIcon>
